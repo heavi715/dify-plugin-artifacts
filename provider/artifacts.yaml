@@ -9,6 +9,16 @@ settings:
       en_US: Please input your bot name
       zh_Hans: 请输入你的机器人名称
     default: "Candy"
+  - name: api-key
+    type: text-input
+    required: true
+    label:
+      en_US: api key
+      zh_Hans: dify api 密钥
+    placeholder:
+      en_US: Please input your API key
+      zh_Hans: 请输入你的api密钥
+    default: "Candy"
   - name: app
     type: app-selector
     scope: chat

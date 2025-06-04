@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artifact</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Mono&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         html,
@@ -18,6 +18,7 @@
             color: #23272f;
             font-size: 14px;
         }
+        
         .main-container {
             display: flex;
             flex-direction: row;
@@ -30,6 +31,7 @@
             padding: 32px 0;
             box-sizing: border-box;
         }
+        
         .chat-box,
         .artifact-pane {
             background: #fff;
@@ -39,6 +41,7 @@
             flex-direction: column;
             overflow: hidden;
         }
+        
         .chat-box {
             width: 380px;
             min-width: 300px;
@@ -49,6 +52,7 @@
             max-height: 88vh;
             flex: 1 1 340px;
         }
+        
         .chat-header {
             font-size: 1.1rem;
             font-weight: 600;
@@ -60,6 +64,7 @@
             justify-content: space-between;
             align-items: center;
         }
+        
         #new-chat-btn {
             font-size: 0.85rem;
             font-weight: 500;
@@ -74,12 +79,15 @@
             align-items: center;
             gap: 4px;
         }
+        
         #new-chat-btn:hover {
             background: #e0e7ff;
         }
+        
         #new-chat-btn .material-icons {
             font-size: 16px;
         }
+        
         .chat-log {
             flex: 1;
             overflow-y: auto;
@@ -89,6 +97,7 @@
             gap: 14px;
             background: none;
         }
+        
         .message {
             max-width: 92%;
             padding: 0.7em 1em;
@@ -101,6 +110,7 @@
             box-shadow: none;
             position: relative;
         }
+        
         .message.user {
             align-self: flex-end;
             background: #e8f0fe;
@@ -110,6 +120,7 @@
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
         }
+        
         .message.bot {
             align-self: flex-start;
             background: #f5f6fa;
@@ -119,6 +130,7 @@
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
         }
+        
         .code-placeholder {
             margin: 0.6em 0 0.2em 0;
             background: #264653;
@@ -133,20 +145,25 @@
             font-family: monospace;
             padding: 12px;
         }
+        
         .code-placeholder-loading {
             animation: pulseBackground 2s infinite ease-in-out;
         }
+        
         .code-placeholder-completed {
             background: #2a6f4b;
             color: #8eed9f;
         }
+        
         .code-placeholder .material-icons {
             margin-right: 8px;
             font-size: 18px;
         }
+        
         .code-placeholder .material-icons.spinning {
             animation: spin 1s infinite linear;
         }
+        
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
@@ -164,6 +181,7 @@
                 transform: rotate(360deg);
             }
         }
+        
         @keyframes pulseBackground {
             0% {
                 background-color: #264653;
@@ -175,6 +193,7 @@
                 background-color: #264653;
             }
         }
+        
         @keyframes codeLoading {
             0% {
                 opacity: 0.5;
@@ -186,6 +205,7 @@
                 opacity: 0.5;
             }
         }
+        
         .chat-input-row {
             display: flex;
             align-items: center;
@@ -196,6 +216,7 @@
             border-bottom-left-radius: 16px;
             border-bottom-right-radius: 16px;
         }
+        
         #user-input {
             flex: 1;
             padding: 0.8em 1em;
@@ -207,9 +228,11 @@
             margin-right: 0;
             transition: border 0.2s;
         }
+        
         #user-input:focus {
             border-color: #2563eb;
         }
+        
         #send-btn {
             padding: 0.8em 1.8em;
             border-radius: 12px;
@@ -222,9 +245,11 @@
             transition: background 0.2s;
             box-shadow: none;
         }
+        
         #send-btn:hover {
             background: #1749b1;
         }
+        
         .artifact-pane {
             width: 500px;
             min-width: 300px;
@@ -237,9 +262,11 @@
             flex-direction: column;
             flex: 1 1 400px;
         }
+        
         .artifact-pane.active {
             display: flex;
         }
+        
         .artifact-tabs {
             display: flex;
             gap: 0;
@@ -247,6 +274,7 @@
             border-bottom: 1.5px solid #f0f0f4;
             margin-top: 18px;
         }
+        
         .artifact-tab {
             padding: 0.6em 1.4em 0.5em 1.4em;
             border-radius: 10px 10px 0 0;
@@ -260,12 +288,14 @@
             border-bottom: 2.5px solid transparent;
             transition: color 0.18s, border-bottom 0.18s;
         }
+        
         .artifact-tab.active {
             color: #2563eb;
             border-bottom: 2.5px solid #2563eb;
             background: none;
             font-weight: 600;
         }
+        
         .artifact-code,
         .artifact-preview {
             flex: 1;
@@ -278,6 +308,7 @@
             min-height: 240px;
             box-sizing: border-box;
         }
+        
         .artifact-code {
             font-family: 'Fira Mono', 'Consolas', monospace;
             background: #23272f;
@@ -285,12 +316,14 @@
             white-space: pre-wrap;
             font-size: 0.95rem;
         }
+        
         .artifact-preview {
             background: #f8f9fb;
             color: #23272f;
             border-radius: 0 0 14px 14px;
             font-size: 0.95rem;
         }
+        
         .artifact-loading {
             display: flex;
             align-items: center;
@@ -300,14 +333,17 @@
             font-size: 1rem;
             font-family: monospace;
         }
+        
         .artifact-loading .material-icons {
             margin-right: 8px;
             animation: spin 1s infinite linear;
         }
         /* Markdown样式 */
+        
         .message p {
             margin: 0.5em 0;
         }
+        
         .message h1,
         .message h2,
         .message h3,
@@ -316,39 +352,49 @@
             margin-bottom: 0.4em;
             font-weight: 600;
         }
+        
         .message h1 {
             font-size: 1.3em;
         }
+        
         .message h2 {
             font-size: 1.2em;
         }
+        
         .message h3 {
             font-size: 1.1em;
         }
+        
         .message h4 {
             font-size: 1em;
         }
+        
         .message a {
             color: #2563eb;
             text-decoration: none;
         }
+        
         .message a:hover {
             text-decoration: underline;
         }
+        
         .message ul,
         .message ol {
             margin: 0.5em 0;
             padding-left: 1.5em;
         }
+        
         .message li {
             margin: 0.25em 0;
         }
+        
         .message blockquote {
             border-left: 3px solid #d1d5db;
             padding-left: 1em;
             margin-left: 0;
             color: #4b5563;
         }
+        
         .message pre {
             background: #f3f4f6;
             padding: 0.7em 1em;
@@ -356,6 +402,7 @@
             overflow-x: auto;
             margin: 0.7em 0;
         }
+        
         .message code {
             font-family: 'Fira Mono', monospace;
             background: #f3f4f6;
@@ -363,16 +410,19 @@
             border-radius: 3px;
             font-size: 0.9em;
         }
+        
         .message pre code {
             background: transparent;
             padding: 0;
             border-radius: 0;
         }
+        
         .message table {
             border-collapse: collapse;
             width: 100%;
             margin: 0.7em 0;
         }
+        
         .message th,
         .message td {
             border: 1px solid #d1d5db;
@@ -380,9 +430,11 @@
             text-align: left;
             font-size: 0.9em;
         }
+        
         .message th {
             background: #f3f4f6;
         }
+        
         @media (max-width: 1100px) {
             .main-container {
                 flex-direction: column;
@@ -408,6 +460,7 @@
                 max-height: 70vh;
             }
         }
+        
         @media (max-width: 700px) {
             .main-container {
                 padding: 12px 0;
@@ -436,6 +489,7 @@
                 max-width: 95%;
             }
         }
+        
         @media (max-height: 700px) {
             .main-container {
                 padding: 16px 0;
@@ -451,6 +505,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="main-container">
         <div class="chat-box">
@@ -493,57 +548,57 @@
         let artifactGenerating = false;
         let artifactCodeBuffer = '';
         let artifactMessagePlaceholder = null;
-        
-    
+
+
         function updateCodePlaceholder(botMessageContainer, contentBeforeCodeblock, isLoading = true) {
             if (isLoading) {
                 if (artifactMessagePlaceholder) {
-                
+
                     const beforeContent = botMessageContainer.querySelector('.content-before-code');
                     if (beforeContent) {
                         beforeContent.innerHTML = renderMarkdown(contentBeforeCodeblock);
                     } else {
-                    
+
                         const currentHTML = botMessageContainer.innerHTML;
-                    
+
                         const placeholderDiv = botMessageContainer.querySelector('.code-placeholder');
                         if (placeholderDiv) {
                             botMessageContainer.innerHTML = `<div class="content-before-code">${renderMarkdown(contentBeforeCodeblock)}</div>`;
                             botMessageContainer.appendChild(placeholderDiv);
                         } else {
-                        
+
                             botMessageContainer.innerHTML = `<div class="content-before-code">${renderMarkdown(contentBeforeCodeblock)}</div>` +
                                 `<div class='code-placeholder code-placeholder-loading'><i class="material-icons spinning">autorenew</i>CODING...</div>`;
                             artifactMessagePlaceholder = botMessageContainer.querySelector('.code-placeholder');
                         }
                     }
                 } else {
-                
+
                     botMessageContainer.innerHTML = `<div class="content-before-code">${renderMarkdown(contentBeforeCodeblock)}</div>` +
                         `<div class='code-placeholder code-placeholder-loading'><i class="material-icons spinning">autorenew</i>CODING...</div>`;
                     artifactMessagePlaceholder = botMessageContainer.querySelector('.code-placeholder');
                 }
             } else {
-            
-            
+
+
                 const afterContent = botMessageContainer.querySelector('.content-after-code');
                 if (afterContent) {
                     afterContent.remove();
                 }
-                
-            
+
+
                 const beforeContent = botMessageContainer.querySelector('.content-before-code');
                 if (beforeContent) {
                     beforeContent.innerHTML = renderMarkdown(contentBeforeCodeblock);
                 } else {
-                
+
                     const beforeDiv = document.createElement('div');
                     beforeDiv.className = 'content-before-code';
                     beforeDiv.innerHTML = renderMarkdown(contentBeforeCodeblock);
                     botMessageContainer.prepend(beforeDiv);
                 }
-                
-            
+
+
                 const placeholder = botMessageContainer.querySelector('.code-placeholder');
                 if (placeholder) {
                     placeholder.className = 'code-placeholder code-placeholder-completed';
@@ -552,8 +607,8 @@
                     const completeDiv = document.createElement('div');
                     completeDiv.className = 'code-placeholder code-placeholder-completed';
                     completeDiv.innerHTML = '<i class="material-icons">check_circle</i>Code generation completed';
-                    
-                
+
+
                     const beforeContent = botMessageContainer.querySelector('.content-before-code');
                     if (beforeContent) {
                         beforeContent.after(completeDiv);
@@ -563,49 +618,51 @@
                 }
             }
         }
-        
+
         marked.setOptions({
             gfm: true,
             breaks: true,
             sanitize: false,
             smartypants: true,
-            highlight: function (code, lang) {
+            highlight: function(code, lang) {
                 return code;
             }
         });
-        tabCode.onclick = function () {
+        tabCode.onclick = function() {
             tabCode.classList.add('active');
             tabPreview.classList.remove('active');
             artifactCode.style.display = '';
             artifactPreview.style.display = 'none';
         };
-        tabPreview.onclick = function () {
+        tabPreview.onclick = function() {
             tabPreview.classList.add('active');
             tabCode.classList.remove('active');
             artifactCode.style.display = 'none';
             artifactPreview.style.display = '';
-            
+
             if (artifactGenerating) {
                 artifactPreview.innerHTML = `<div class='artifact-loading'><i class="material-icons">autorenew</i>CODING...</div>`;
             } else if (lastArtifactHtml) {
                 try {
                     // 清空预览区域
                     artifactPreview.innerHTML = '';
-                    
+
                     // 创建一个blob URL
-                    const blob = new Blob([lastArtifactHtml], {type: 'text/html'});
+                    const blob = new Blob([lastArtifactHtml], {
+                        type: 'text/html'
+                    });
                     const blobUrl = URL.createObjectURL(blob);
-                    
+
                     // 创建iframe并设置src为blob URL
                     const iframe = document.createElement('iframe');
                     iframe.style.width = '100%';
                     iframe.style.height = '100%';
                     iframe.style.border = 'none';
                     iframe.src = blobUrl;
-                    
+
                     // 添加iframe到预览区域
                     artifactPreview.appendChild(iframe);
-                    
+
                     // 在iframe加载完成后释放blob URL
                     iframe.onload = function() {
                         URL.revokeObjectURL(blobUrl);
@@ -617,6 +674,7 @@
                 artifactPreview.innerHTML = '';
             }
         };
+
         function appendMessage(text, sender) {
             const msg = document.createElement('div');
             msg.className = 'message ' + sender;
@@ -625,6 +683,7 @@
             chatLog.scrollTop = chatLog.scrollHeight;
             return msg;
         }
+
         function showArtifact(htmlCode) {
             artifactPane.classList.add('active');
             artifactCode.textContent = htmlCode;
@@ -634,6 +693,7 @@
             artifactPreview.style.display = 'none';
             lastArtifactHtml = htmlCode;
         }
+
         function hideArtifact() {
             artifactPane.classList.remove('active');
             artifactCode.textContent = '';
@@ -674,15 +734,23 @@
                 const htmlBlockStartRegex = /```html[\r\n]+/;
                 const htmlBlockCompleteRegex = /```html[\r\n]+([\s\S]*?)```/;
                 while (true) {
-                    const { value, done } = await reader.read();
+                    const {
+                        value,
+                        done
+                    } = await reader.read();
                     if (done) break;
-                    buffer += decoder.decode(value, { stream: true });
+                    buffer += decoder.decode(value, {
+                        stream: true
+                    });
                     const lines = buffer.split('\n\n');
                     buffer = lines.pop() || '';
                     for (const line of lines) {
                         if (!line.trim()) continue;
                         try {
+                            console.log(line)
                             const data = JSON.parse(line);
+                            console.log(data)
+                            console.log(data.answer)
                             if (data.answer) {
                                 accumulatedText += data.answer;
                                 if (!codeBlockStarted) {
@@ -714,9 +782,9 @@
                                         const codeEndIndex = accumulatedText.indexOf('```', codeStartIndex + 6) + 3;
                                         const contentBeforeCodeblock = accumulatedText.substring(0, codeStartIndex);
                                         let contentAfterCodeblock = accumulatedText.substring(codeEndIndex);
-                                        
+
                                         contentAfterCodeblock = contentAfterCodeblock.trim();
-                                        
+
                                         updateCodePlaceholder(botMessageContainer, contentBeforeCodeblock, false);
                                         if (contentAfterCodeblock) {
                                             const afterContent = document.createElement('div');
@@ -724,10 +792,10 @@
                                             afterContent.innerHTML = renderMarkdown(contentAfterCodeblock);
                                             botMessageContainer.appendChild(afterContent);
                                         }
-                                        
+
                                         artifactCode.textContent = artifactCodeBuffer;
                                         lastArtifactHtml = artifactCodeBuffer;
-                                        
+
                                         // 预加载iframe以便立即渲染
                                         if (tabPreview.classList.contains('active')) {
                                             tabPreview.onclick();
@@ -743,16 +811,16 @@
                                         }
                                     }
                                 } else if (!codeBlockStarted || codeBlockEnded) {
-                                
+
                                     if (codeBlockEnded) {
-                                    
+
                                         const codeStartIndex = accumulatedText.indexOf('```html');
                                         const codeEndIndex = accumulatedText.indexOf('```', codeStartIndex + 6) + 3;
                                         const contentBeforeCodeblock = accumulatedText.substring(0, codeStartIndex);
                                         let contentAfterCodeblock = accumulatedText.substring(codeEndIndex);
-                                        
+
                                         contentAfterCodeblock = contentAfterCodeblock.trim();
-                                        
+
                                         updateCodePlaceholder(botMessageContainer, contentBeforeCodeblock, false);
                                         if (contentAfterCodeblock) {
                                             const afterContent = document.createElement('div');
@@ -761,7 +829,7 @@
                                             botMessageContainer.appendChild(afterContent);
                                         }
                                     } else {
-                                    
+
                                         botMessageContainer.innerHTML = renderMarkdown(accumulatedText);
                                     }
                                 }
@@ -770,22 +838,21 @@
                                 conversationId = data.conversation_id;
                                 localStorage.setItem('conversation_id', conversationId);
                             }
-                        } catch (error) {
-                        }
+                        } catch (error) {}
                     }
                 }
                 if (codeBlockEnded && lastArtifactHtml) {
-                
+
                     tabPreview.onclick();
-                    
-                
+
+
                     const codeStartIndex = accumulatedText.indexOf('```html');
                     const codeEndIndex = accumulatedText.indexOf('```', codeStartIndex + 6) + 3;
                     const contentBeforeCodeblock = accumulatedText.substring(0, codeStartIndex);
                     let contentAfterCodeblock = accumulatedText.substring(codeEndIndex);
-                    
+
                     contentAfterCodeblock = contentAfterCodeblock.trim();
-                    
+
                     updateCodePlaceholder(botMessageContainer, contentBeforeCodeblock, false);
                     if (contentAfterCodeblock) {
                         const afterContent = document.createElement('div');
@@ -802,43 +869,51 @@
                 hideArtifact();
             }
         }
+
         function startNewConversation() {
-        
+
             chatLog.innerHTML = '';
-            
-        
+
+
             conversationId = '';
             localStorage.removeItem('conversation_id');
-            
-        
+
+
             hideArtifact();
             globalAccumulatedText = '';
             globalCodeBlockStarted = false;
             globalCodeBlockEnded = false;
-            
-        
+
+
             appendMessage('New Chat', 'bot');
         }
-        
-    
+
+
         newChatBtn.addEventListener('click', startNewConversation);
-        
-    
+
+
         sendBtn.addEventListener('click', () => sendMessage());
-        userInput.addEventListener('keypress', function (event) {
+        userInput.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') sendMessage();
         });
+
         function renderMarkdown(text, codeBlockStarted, codeBlockEnded) {
             let renderedHtml = marked.parse(text);
             renderedHtml = DOMPurify.sanitize(renderedHtml);
             return renderedHtml;
         }
+
         function escapeHtml(str) {
-            return str.replace(/[&<>]/g, function (tag) {
-                const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
+            return str.replace(/[&<>]/g, function(tag) {
+                const chars = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;'
+                };
                 return chars[tag] || tag;
             });
         }
     </script>
 </body>
+
 </html>
